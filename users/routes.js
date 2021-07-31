@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../middlewares/upload');
 
 
 router.route('/users').get((req, res) => {
     res.end(`${new Date().toDateString()} Method ${req.method}`)
-}).post((req, res) => {
+}).post(upload.single('image'), (req, res) => {
+    
+    console.log(req.file);
     res.end(`${new Date().toDateString()} Method ${req.method}`)
 }).put((req, res) => {
     res.end(`${new Date().toDateString()} Method ${req.method}`)

@@ -6,6 +6,10 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
+
 //Homework1
 
 // const myEvent = new event.EventEmitter();
@@ -23,6 +27,7 @@ const app = express();
 const rout = require('./users/routes');
 
 app.use(rout);
+
 
 http.createServer(app).listen(3000);
 
